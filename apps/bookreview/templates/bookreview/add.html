@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <title>Success</title>
+      
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+       <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    </head>
+
+    <body>
+      <div class="container">
+  
+      <h3>Add a Book!</h3>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/bookreview/books"> Home</a></li>
+              <li><a href="/bookreview/logout"> Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+
+      
+      <hr>
+
+      <div>
+        <form action='/bookreview/newbook' method='post'>
+          {% csrf_token %}
+          <div class='form-group'>
+              <label for="title"> Book Title:</label>
+              <input type='text' name='title' placeholder="Title" class="form-control">
+          </div>
+          <div class='form-group'>
+            <label for="author"> Author:</label>
+              <select name="author" class="form-control">
+                <option value=""></option>
+                {% for author in authorlist %}
+                  <option value="{{author}}">{{author}}</option>
+                {% endfor %}
+              </select>
+
+         </div>
+
+          <div class='form-group'>
+              <label for="authornew">Or Add a New Author:</label>
+              <input type='text' name='authornew'  placeholder="Author" class="form-control">
+          </div>
+
+
+  
+          <div class='form-group'>
+              <label for="review">Review:</label>
+              <textarea name='review' class="form-control"></textarea>
+         </div>
+          <div class='form-group'>
+              <label for="rating">Rating:</label>
+              <select name="rating">
+              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+              </select>
+         </div>  
+
+
+          <div class='form-group'>
+           <input type='submit' value='Create' class="btn btn-info">
+          </div>
+      <hr>
+            {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+              {{ message }}<Br>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+
+
+     
+      <!-- read on to learn about form actions, we'll talk about the method in a later section -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      </div>
+    </body>
+</html>

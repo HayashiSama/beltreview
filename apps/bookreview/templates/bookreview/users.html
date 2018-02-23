@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <title>Users</title>
+      
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+      <div class="container">
+      <br>
+      <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/bookreview/books"> Home</a> </li>
+              <li><a href="/bookreview/add"> Add Book and Review</a></li>
+              <li><a href="/bookreview/logout"> Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+    
+
+      <hr>
+
+        <h3> User Alias: {{user.alias}}</h3>
+        <h5> Name : {{user.name}}</h4>
+        <h5> Email : {{user.email}}</h5>
+        <h5> Total Reviews : {{count}}</h5>
+        <hr>
+        <h6>Books Reviewed:</h6>
+      {% for book in books %}
+            <a href='/bookreview/books/{{book.id}}/'>{{book.title.capitalize}}</a><br>
+      {% endfor %}
+
+
+
+     
+      <!-- read on to learn about form actions, we'll talk about the method in a later section -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      </div>
+    </body>
+</html>

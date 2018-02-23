@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <title>Success</title>
+      
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+      <div class="container">
+  
+      <h3>Book</h3>
+      <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/bookreview/books"> Home</a> </li>
+              <li><a href="/bookreview/logout"> Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+    
+      <hr>
+
+        <h3>{{book.title.capitalize}}</h3>
+        <h4> Author : {{book.author}}</h4>
+        <hr>
+              <div class="addreview">
+        <form action='/bookreview/newreview/{{book.id}}/' method='post'>
+                    {% csrf_token %}
+          <div class='form-group'>
+              <label for="review">Review:</label>
+              <textarea name='review' class="form-control"></textarea>
+         </div>
+          <div class='form-group'>
+              <label for="rating">Rating:</label>
+              <select name="rating">
+              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+              </select>
+         </div> 
+          <div class='form-group'>
+           <input type='submit' value='Review' class="btn btn-info">
+          </div>
+         </form><hr>
+      </div>
+      {% for review in reviews %}
+            
+                <a href="/bookreview/users/{{review.reviewer.id}}/">{{review.reviewer.name}}</a> says:
+
+                {{review.content}}<br>
+                Posted On: {{review.created_at}}
+                {% if id == review.reviewer.id %}<br>
+                  <a href="/bookreview/delete/{{review.id}}" class='form-group'><button class='btn btn-info' > Delete Review </button></a>
+                {% endif %}
+                
+    
+        <hr>
+      {% endfor %}
+
+
+
+     
+      <!-- read on to learn about form actions, we'll talk about the method in a later section -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      </div>
+    </body>
+</html>

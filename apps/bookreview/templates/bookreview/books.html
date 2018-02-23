@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <title>Success</title>
+      
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    </head>
+
+    <body>
+      <div class="container">
+        <h3>Welcome {{user.name}}</h3>
+       <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/bookreview/add"> Add Book and Review</a></li>
+              <li><a href="/bookreview/logout">Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+      <hr>
+
+  
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4>Recent Book Reviews:</h4></div>
+          <div class="panel-body">
+      {% for review in reviews %}
+            <a href="/bookreview/books/{{review.book.id}}">{{review.book.title.capitalize}}</a>
+            <p>Rating: {{review.rating}}<br>
+              <a href="/bookreview/users/{{review.reviewer.id}}/">{{review.reviewer.name}}</a>
+
+      
+      {% endfor %}
+       </div>
+     </div>
+      <hr>
+
+      <div class="panel panel-primary">
+        <div class="panel-heading"> Books </div>
+        <div class="panel-body">
+        {% for book in books %}
+        <a href='/bookreview/books/{{book.id}}/'>{{book.title.capitalize}}</a><br>
+        {% endfor %}
+      </div>
+      
+      </div>
+
+
+     
+      <!-- read on to learn about form actions, we'll talk about the method in a later section -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      </div>
+    </body>
+</html>
