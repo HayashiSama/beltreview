@@ -45,10 +45,13 @@ def register(request):
 	
 def login(request):	
 	if request.method=='POST':
-		user = User.objects.login(request.POST)
-	if user:
-		request.session['id']=user.id
-		return redirect('/bookreview/books')	
+		errors = User.objects.login(request.POST)
+	if 'user' in errors:
+		request.session['id']=errors['user'].id
+		return redirect('/bookreview/books')
+
+	for x in errors:
+			messages.warning(request, errors[x])	
 	return redirect('/bookreview')			
 	
 

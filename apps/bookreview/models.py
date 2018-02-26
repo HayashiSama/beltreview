@@ -21,8 +21,6 @@ class UserManager(models.Manager):
 			errors['password_match'] = "Passwords don't match"
 		if len(postData['password'])<8:
 			errors['password'] = "Password must be at least 8 characters"		
-		
-
 
 		if(not len(errors)):
 			hash1 = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())						
@@ -41,11 +39,11 @@ class UserManager(models.Manager):
 		try:
 			user = User.objects.get(email=email)
 			if(bcrypt.checkpw(postData['password'].encode(), user.password.encode())):
-				return user
+				errors['user'] = user
 			errors['incorrect'] = "Incorrect Username Or Password"
 		except User.DoesNotExist:
 			errors['incorrect'] = "Incorrect Username Or Password"
-		return False
+		return errors
 
 
 class BookManager(models.Manager):

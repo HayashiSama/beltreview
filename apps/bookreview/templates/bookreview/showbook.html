@@ -4,26 +4,25 @@
     <head>
       <title>Success</title>
       
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     </head>
 
     <body>
       <div class="container">
   
-      <h3>Book</h3>
-      <nav class="navbar navbar-default">
+     
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="/bookreview/books"> Home</a> </li>
-              <li><a href="/bookreview/logout"> Logout</a></li>
+            <p class='navbar-brand'> Book Review</p>
+            <ul class="nav navbar-nav ">
+              <li class='nav-item'><a href="/bookreview/add" class='nav-link'> Add Book and Review</a></li>
+              <li class='nav-item'><a href="/bookreview/logout" class='nav-link'>Logout</a></li>
             </ul>
           </div>
-        </nav>
-    
-      <hr>
+        </nav> 
 
-        <h3>{{book.title.capitalize}}</h3>
+        <h3> Title : {{book.title.capitalize}}</h3>
         <h4> Author : {{book.author}}</h4>
         <hr>
               <div class="addreview">
@@ -53,7 +52,7 @@
                 {% if id == review.reviewer.id %}<br>
                   <a href="/bookreview/delete/{{review.id}}" class='form-group'><button class='btn btn-info' > Delete Review </button></a>
                 {% endif %}
-                
+
     
         <hr>
       {% endfor %}
